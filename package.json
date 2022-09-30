@@ -1,0 +1,34 @@
+{
+  "name": "breakingarg",
+  "version": "1.0.0",
+  "description": "Proyecto II",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vallejos00/BreakingArg.git"
+  },
+  "author": "Santiago Vallejos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vallejos00/BreakingArg/issues"
+  },
+  "homepage": "https://github.com/Vallejos00/BreakingArg#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-validator": "^6.14.2",
+    "mongoose": "^6.6.3",
+    "node-fetch": "^3.2.10",
+    "nodemailer": "^6.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "type": "module"
+}
