@@ -1,10 +1,11 @@
 {{>header}}
 
 <p>{{message}}</p>
-<a href="/loginForm">Iniciar sesión</a>
-<a href="/registrate">Registrate</a>
-
 {{#if user}}
 <p><a href="/foro">Volvé al foro</a></p>
+{{else}}
+<a href="/loginForm">Iniciar sesión</a>
+<a href="/registrate">Registrate</a>
 {{/if}}
+
 {{>footer}}

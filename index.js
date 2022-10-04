@@ -25,7 +25,7 @@ app.use(express.static("public"))
 /*-----------------------------------------------------*/
 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.render('home', {user: req.session.user})
 });
 
 const auth = (req, res, next) => {
@@ -35,6 +35,10 @@ const auth = (req, res, next) => {
         res.render('home', {message: 'No estás logueado'})
      }
 }
+
+app.get('/miPerfil', auth, (req, res) => {
+    res.render('miPerfil', {usr})
+})
 
 app.post('/foro', auth, (req, res) => {
     res.render('foro', {user: req.session.user})
