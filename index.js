@@ -36,9 +36,6 @@ const auth = (req, res, next) => {
      }
 }
 
-app.get('/miPerfil', auth, (req, res) => {
-    res.render('miPerfil', {usr})
-})
 
 app.post('/foro', auth, (req, res) => {
     res.render('foro', {user: req.session.user})
@@ -48,6 +45,13 @@ app.get('/foro', auth, (req, res) => {
     res.render('foro', {user: req.session.user})
 })
 
+app.get('/miPerfil', auth, (req, res) => {
+    res.render('miPerfil', {userInfo: req.session.userInfo, user: req.session.user})
+})
+
+app.get('/editProfile', auth, (req, res) => {
+    res.render('editProfile', {userInfo: req.session.userInfo})
+})
 app.get('/contactanos', (req, res) => {
     res.render('contactanos')
 })

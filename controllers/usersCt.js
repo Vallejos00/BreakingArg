@@ -18,7 +18,7 @@
         })
         newUser.save((err)=>{
             if(!err){
-                req.session.user = `${firstName} ${lastName}`
+                req.session.user = `${userName}`
                 res.redirect('/foro')
             } else{
                 console.log(err.message);
@@ -28,20 +28,22 @@
 
 //login
 async function sendLoginForm(req, res, next) {
- const { userName, pass } = req.body
- const user = await User.find().where({ userName })
+    const { userName, pass } = req.body
+    const user = await User.find().where({ userName })
+    const usr = {
+        id: user[0]._id,
+        firstName: user[0].firstName,
+        lastName: user[0].lastName,
+        userName: user[0].userName,
+        password: user[0].password,
+        email: user[0].email,
+    }
  if(!user.length){
     return res.render('loginForm', {message: 'Usuario o contraseña incorrecta'})
  };
  
 if(await securePass.decrypt(pass, user[0].password)){
-    const usr = {
-        id: user[0]._id,
-        firstName: user[0].firstName,
-        lastName: user[0].lastName,
-        userName: user[0].userName
-    }
-
+    req.session.userInfo = `${usr.userName} ${usr.firstName} ${usr.password} ${usr.email}`
     req.session.user =  `${usr.userName}`
     res.redirect('/foro')
 } else return res.render('loginForm', {message: 'Usuario o contraseña incorrecta'})
