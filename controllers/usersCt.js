@@ -30,6 +30,11 @@
 async function sendLoginForm(req, res, next) {
     const { userName, pass } = req.body
     const user = await User.find().where({ userName })
+ if(!user.length){
+    return res.render('loginForm', {message: 'Usuario o contraseña incorrecta'})
+ };
+ 
+if(await securePass.decrypt(pass, user[0].password)){
     const usr = {
         id: user[0]._id,
         firstName: user[0].firstName,
@@ -38,13 +43,8 @@ async function sendLoginForm(req, res, next) {
         password: user[0].password,
         email: user[0].email,
     }
- if(!user.length){
-    return res.render('loginForm', {message: 'Usuario o contraseña incorrecta'})
- };
- 
-if(await securePass.decrypt(pass, user[0].password)){
-    req.session.userInfo = `${usr.userName} ${usr.firstName} ${usr.password} ${usr.email}`
-    req.session.user =  `${usr.userName}`
+
+    req.session.user =  usr
     res.redirect('/foro')
 } else return res.render('loginForm', {message: 'Usuario o contraseña incorrecta'})
 }
@@ -58,8 +58,16 @@ function getLoginForm(req, res) {
             req.session.destroy()
             res.redirect('/')
     }
+
+
     
-    const usersFunction = {getRegistrateForm, sendRegistratreForm, sendLoginForm, getLoginForm, logout }
+    const usersFunction = {
+        getRegistrateForm, 
+        sendRegistratreForm, 
+        sendLoginForm, 
+        getLoginForm, 
+        logout,
+         }
 
 
 

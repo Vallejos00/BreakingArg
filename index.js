@@ -5,6 +5,7 @@ import hbs from "express-handlebars"
 import fetch from "node-fetch"
 import { engine } from 'express-handlebars';
 import usersRt from "./routes/usersRT.js";
+import profileRt from "./routes/profileRt.js";
 import session from "express-session";
 
 const PORT = 3000
@@ -38,25 +39,20 @@ const auth = (req, res, next) => {
 
 
 app.post('/foro', auth, (req, res) => {
-    res.render('foro', {user: req.session.user})
+    res.render('foro', {user: req.session.user.userName})
 })
 
 app.get('/foro', auth, (req, res) => {
-    res.render('foro', {user: req.session.user})
+    res.render('foro', {user: req.session.user.userName})
 })
 
-app.get('/miPerfil', auth, (req, res) => {
-    res.render('miPerfil', {userInfo: req.session.userInfo, user: req.session.user})
-})
 
-app.get('/editProfile', auth, (req, res) => {
-    res.render('editProfile', {userInfo: req.session.userInfo})
-})
 app.get('/contactanos', (req, res) => {
     res.render('contactanos')
 })
 
 app.use('/', usersRt)
+app.use('/foro', profileRt)
 
 
 
