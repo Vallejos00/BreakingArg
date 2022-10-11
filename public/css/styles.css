@@ -1,0 +1,29 @@
+.form-container{
+  display: flex;
+  margin-left: 30%;
+  margin-right: 30%;
+  border: solid 1px;
+  padding: 2%;
+  justify-content: center;
+}
+
+h1{
+  color: aqua;
+}
+
+.form-input{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  
+}
+
+/* .btn{
+
+} */
+
+.btn-container{
+  display: flex;
+  justify-content: space-between;
+}
+

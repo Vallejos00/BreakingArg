@@ -7,6 +7,7 @@ import { engine } from 'express-handlebars';
 import usersRt from "./routes/usersRT.js";
 import profileRt from "./routes/profileRt.js";
 import session from "express-session";
+import path from "path";
 
 const PORT = 3000
 const app = express()
@@ -21,7 +22,7 @@ app.use(session({
 app.engine('hbs', hbs.engine({ extname: "hbs"}));
 app.set('view engine', 'hbs');
 app.set('views', './views');
-app.use(express.static("public"))
+app.use(express.static(path.join('public')));
 
 /*-----------------------------------------------------*/
 

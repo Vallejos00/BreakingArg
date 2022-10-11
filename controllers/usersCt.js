@@ -16,9 +16,17 @@
         const newUser = new User({
             firstName, lastName, email, userName, password
         })
+        const usr = {
+            id: newUser._id,
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            userName: newUser.userName,
+            password: newUser.password,
+            email: newUser.email
+        }    
         newUser.save((err)=>{
             if(!err){
-                req.session.user = `${userName}`
+                req.session.user = usr
                 res.redirect('/foro')
             } else{
                 console.log(err.message);

@@ -1,21 +1,27 @@
+<link rel="stylesheet" href="/public/css/styles.css">
 {{>header}}
 <p>{{user.userName}}</p>
 
+
+<div class="form-container">
+
 <form action= "/foro/miPerfil/editProfile" method="POST" id="formElem">
     <label for="firstName">Nombre:</label>
-<input id="firstName" type="text" name="firstName" value="{{user.firstName}}">
+<input class="form-input" id="firstName" type="text" name="firstName" value="{{user.firstName}}" readonly>
 
     <label for="lastName">Apellido:</label>
-<input id="lastName" type="text" name="lastName" value="{{user.lastName}}">
+<input class="form-input" id="lastName" type="text" name="lastName" value="{{user.lastName}}" readonly>
 
     <label for="email">Email</label>
- <input id="email" type="text" name="email" value="{{user.email}}">  
+ <input class="form-input" id="email" type="text" name="email" value="{{user.email}}" readonly>  
 
     <label for="userName">Nombre de usuario</label>
- <input id="userName" type="text" name="userName" value="{{user.userName}}">  
+ <input class="form-input" id="userName" type="text" name="userName" value="{{user.userName}}" readonly>  
 
+  <div class="btn-container">
+    <input class="btn" type="submit" value="Guardar">
+     </form>
 
-<input type="submit" value="Guardar">
-</form>
-
-<a href="/foro/miPerfil">Cancelar</a>
+    <a class="btn" href="/foro/miPerfil">Cancelar</a>
+  </div>
+</div>
