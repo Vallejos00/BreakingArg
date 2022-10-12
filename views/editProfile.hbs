@@ -1,27 +1,40 @@
-<link rel="stylesheet" href="/public/css/styles.css">
+<body class="editProfile">
+
 {{>header}}
-<p>{{user.userName}}</p>
+{{!-- <p>{{user.userName}}</p> --}}
 
 
-<div class="form-container">
+<div class="form-container-editProfile">
 
-<form action= "/foro/miPerfil/editProfile" method="POST" id="formElem">
+<form action= "/miPerfil/editProfile" method="POST" id="formElem">
     <label for="firstName">Nombre:</label>
-<input class="form-input" id="firstName" type="text" name="firstName" value="{{user.firstName}}" readonly>
+<input class="form-input-editProfile" id="firstName" type="text" name="firstName" value="{{user.firstName}}" >
 
     <label for="lastName">Apellido:</label>
-<input class="form-input" id="lastName" type="text" name="lastName" value="{{user.lastName}}" readonly>
+<input class="form-input-editProfile" id="lastName" type="text" name="lastName" value="{{user.lastName}}" >
 
     <label for="email">Email</label>
- <input class="form-input" id="email" type="text" name="email" value="{{user.email}}" readonly>  
+ <input class="form-input-editProfile" id="email" type="text" name="email" value="{{user.email}}" >  
 
     <label for="userName">Nombre de usuario</label>
- <input class="form-input" id="userName" type="text" name="userName" value="{{user.userName}}" readonly>  
+ <input class="form-input-editProfile" id="userName" type="text" name="userName" value="{{user.userName}}" >  
 
   <div class="btn-container">
     <input class="btn" type="submit" value="Guardar">
      </form>
 
-    <a class="btn" href="/foro/miPerfil">Cancelar</a>
+    <a class="btn" href="/miPerfil">Cancelar</a>
+    
   </div>
 </div>
+
+
+<footer class="footer-editProfile">
+
+<ul class="footer-items-container-editProfile">
+    <li><a class="footer-items-editProfile" href="../contactanos">Contactanos</a></li>
+    <li><a class="footer-items-editProfile" href="../nosotros">Nosotros</a></li>
+    <li><a class="footer-items-editProfile" href="../sobreBB">Sobre Breaking Bad</a></li>
+</ul>
+</footer>
+</body>

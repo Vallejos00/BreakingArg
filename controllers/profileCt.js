@@ -8,20 +8,26 @@ router.use(express.urlencoded())
     const user = await User.findById(req.session.user.id).lean()
     res.render('miPerfil', {user})
  }   
-
+//muestro formulario
  async function profileForm(req, res){
     const user = await User.findById(req.session.user.id).lean()
     res.render('editProfile', {user})
+   
  }
+//proceso formulario
+async function editProfile(req, res){
+   try{
+       await User.findByIdAndUpdate(req.session.user.id, req.body)
+       res.redirect('/foro/miPerfil')
+   } catch (err) {
+       res.render('editProfile')
+   }
+}
 
-  async function editProfile(req, res){
-    try{
-        await User.findByIdAndUpdate(req.session.user.id, req.body)
-        res.redirect('/foro/miPerfil')
-    } catch (err) {
-        res.render('editProfile')
-    }
- }
+// async function newProfile(req, res){
+//    const user = await User.findById(req.session.user.id).lean()
+//    res.render('foro', {user})
+//  }
 
 
 
@@ -30,7 +36,7 @@ router.use(express.urlencoded())
     getProfile,
     profileForm,
     editProfile,
-
+    
  }
 
  export default profileFunction

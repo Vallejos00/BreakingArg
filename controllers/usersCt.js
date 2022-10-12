@@ -4,11 +4,11 @@
   const router = express.Router()
   router.use(express.urlencoded())
 
-
+//muestro formulario de registro
     function getRegistrateForm(req, res, next)  {
         res.render('registrate')
     }
-    
+ //proceso formulario de registro
     async function sendRegistratreForm (req, res, next) {
         const { firstName, lastName, email, userName, pass } = req.body
         const password = await securePass.encrypt(pass);
@@ -34,7 +34,13 @@
         })
     }
 
-//login
+//muestro formulario de login
+function getLoginForm(req, res) {
+    res.render('loginForm')
+}
+
+
+//proceso formulario de login
 async function sendLoginForm(req, res, next) {
     const { userName, pass } = req.body
     const user = await User.find().where({ userName })
@@ -57,9 +63,33 @@ if(await securePass.decrypt(pass, user[0].password)){
 } else return res.render('loginForm', {message: 'Usuario o contraseña incorrecta'})
 }
 
-function getLoginForm(req, res) {
-    res.render('loginForm')
+//muestro datos de perfil
+async function getProfile(req, res){
+    const user = await User.findById(req.session.user.id).lean()
+    res.render('miPerfil', {user})
+ }   
+//muestro formulario de edit
+ async function profileForm(req, res){
+    const user = await User.findById(req.session.user.id).lean()
+    res.render('editProfile', {user})
+   
+ }
+//proceso formulario de edit
+async function editProfile(req, res){
+   try{
+       await User.findByIdAndUpdate(req.session.user.id, req.body)
+       res.redirect('/miPerfil')
+   } catch (err) {
+       res.render('editProfile')
+   }
 }
+
+async function newForo(req, res){
+    const user = await User.findById(req.session.user.id).lean()
+    res.render('foro', {userName: user.userName})
+ }
+
+
 
 //logout
     function logout(req, res){
@@ -72,6 +102,9 @@ function getLoginForm(req, res) {
     const usersFunction = {
         getRegistrateForm, 
         sendRegistratreForm, 
+        getProfile,
+        profileForm,
+        editProfile,
         sendLoginForm, 
         getLoginForm, 
         logout,

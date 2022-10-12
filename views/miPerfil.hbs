@@ -1,5 +1,24 @@
 <h1>Perfil</h1>
-<h2>{{user.userName}}</h2>
-<p>{{user.email}}</p>
-<a href="/foro/miPerfil/editProfile">Editar perfil</a>
-<a href="/foro">Volver</a>
+<div class="form-container">
+<form >
+    <label for="firstName">Nombre:</label>
+<p class="form-input">{{user.firstName}}</p>
+
+    <label for="lastName">Apellido:</label>
+<p class="form-input">{{user.lastName}}</p>
+
+    <label for="email">Email</label>
+<p class="form-input">{{user.email}}</p>
+    <label for="userName">Nombre de usuario</label>
+<p class="form-input">{{user.userName}}</p>
+
+  
+<div class="btn-container">
+<a class="btn" href="/foro">Volver</a>
+<a class="btn" href="/miPerfil/editProfile">Editar perfil</a>
+</div>
+</div>
+<p>
+{{message}}
+</p>
+{{>footer}}

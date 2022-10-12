@@ -8,6 +8,7 @@ import usersRt from "./routes/usersRT.js";
 import profileRt from "./routes/profileRt.js";
 import session from "express-session";
 import path from "path";
+import User from "./schemas/userSchemas.js";
 
 const PORT = 3000
 const app = express()
@@ -40,7 +41,7 @@ const auth = (req, res, next) => {
 
 
 app.post('/foro', auth, (req, res) => {
-    res.render('foro', {user: req.session.user.userName})
+    res.render('foro', {user: req.session.user.userName, id:req.session.user.id})
 })
 
 app.get('/foro', auth, (req, res) => {
@@ -53,7 +54,7 @@ app.get('/contactanos', (req, res) => {
 })
 
 app.use('/', usersRt)
-app.use('/foro', profileRt)
+
 
 
 
