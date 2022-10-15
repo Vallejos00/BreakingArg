@@ -1,14 +1,12 @@
 <div>
 
-<form action= "/registrate"  id="formElem">
-    <label for="firstName">Nombre:</label>
-<input id="firstName" type="text" name="firstName">
+<form action= "/contactanos"  id="formElem" method="POST">
+    <label for="userName">Nombre de usuario</label>
+<input id="userName" type="text" name="userName" value="{{user.userName}}" readonly>
 
-    <label for="lastName">Apellido:</label>
-<input id="lastName" type="text" name="lastName">
 
     <label for="email">Email</label>
- <input id="email" type="text" name="email">  
+ <input id="email" type="text" name="email" value="{{user.email}}" readonly>  
 
    <textarea name="msg"></textarea>
  <input id="msg" type="hidden" name="msg"> 
@@ -17,3 +15,5 @@
 </form>
 
 </div>
+
+<a href="/foro">Volver</a>

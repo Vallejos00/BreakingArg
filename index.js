@@ -40,18 +40,16 @@ const auth = (req, res, next) => {
 }
 
 
-app.post('/foro', auth, (req, res) => {
-    res.render('foro', {user: req.session.user.userName, id:req.session.user.id})
-})
+// app.post('/foro', auth, (req, res) => {
 
-app.get('/foro', auth, (req, res) => {
-    res.render('foro', {user: req.session.user.userName})
-})
+// })
+
+// app.get('/foro', auth, (req, res) => {
+//     res.render('foro', {user: req.session.user.userName})
+// })
 
 
-app.get('/contactanos', (req, res) => {
-    res.render('contactanos')
-})
+
 
 app.use('/', usersRt)
 
