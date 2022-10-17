@@ -86,18 +86,26 @@ async function editProfile(req, res){
    }
 }
 
+//delete
+async function deleteUser(req, res) {
+    await User.findByIdAndDelete(req.session.user.id)
+    req.session.destroy()
+    res.redirect('/')
+}
+
+//muestro foro
 async function getForo(req, res){
     const user = await User.findById(req.session.user.id).lean()
     res.render('foro', {user})
- }
+}
 
 
 
 //logout
-    function logout(req, res){
-            req.session.destroy()
-            res.redirect('/')
-    }
+function logout(req, res){
+    req.session.destroy()
+    res.redirect('/')
+}
 
 
 //mostrar formulario de contacto
@@ -154,7 +162,8 @@ async function contactanos(req, res) {
         logout,
         contactanos,
         getContactanos,
-        getForo
+        getForo,
+        deleteUser
          }
 
 

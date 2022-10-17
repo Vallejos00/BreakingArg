@@ -5,7 +5,6 @@ import hbs from "express-handlebars"
 import fetch from "node-fetch"
 import { engine } from 'express-handlebars';
 import usersRt from "./routes/usersRT.js";
-import profileRt from "./routes/profileRt.js";
 import session from "express-session";
 import path from "path";
 import User from "./schemas/userSchemas.js";
@@ -31,13 +30,7 @@ app.get('/', (req, res) => {
     res.render('home', {user: req.session.user})
 });
 
-const auth = (req, res, next) => {
-     if(req.session.user){
-        next()
-     } else {
-        res.render('home', {message: 'No estás logueado'})
-     }
-}
+
 
 
 // app.post('/foro', auth, (req, res) => {

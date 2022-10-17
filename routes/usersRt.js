@@ -1,6 +1,7 @@
 import express from "express" 
 const usersRt = express.Router()
 import usersFunction from '../controllers/usersCt.js'
+import auth from '../config/auth.js'
 usersRt.use(express.urlencoded())
 
 //registro
@@ -10,14 +11,16 @@ usersRt.post('/registrate', usersFunction.sendRegistratreForm );
 usersRt.post('/loginForm', usersFunction.sendLoginForm);
 usersRt.get('/loginForm', usersFunction.getLoginForm);
 //foro
-usersRt.get('/foro', usersFunction.getForo)
+usersRt.get('/foro', auth, usersFunction.getForo)
 //edit
-usersRt.get('/miPerfil', usersFunction.getProfile)
-usersRt.get('/miPerfil/editProfile', usersFunction.profileForm)
-usersRt.post('/miPerfil/editProfile', usersFunction.editProfile)
+usersRt.get('/miPerfil', auth, usersFunction.getProfile)
+usersRt.get('/miPerfil/editProfile', auth, usersFunction.profileForm)
+usersRt.post('/miPerfil/editProfile', auth, usersFunction.editProfile)
+//delete
+usersRt.post('/miPerfil/delete', auth, usersFunction.deleteUser)
 //contactanos
-usersRt.get('/contactanos', usersFunction.getContactanos)
-usersRt.post('/contactanos', usersFunction.contactanos)
+usersRt.get('/contactanos', auth, usersFunction.getContactanos)
+usersRt.post('/contactanos', auth, usersFunction.contactanos)
 //logout
 usersRt.get('/logout', usersFunction.logout);
 
