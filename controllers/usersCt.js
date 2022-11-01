@@ -30,9 +30,14 @@
             if(!err){
                 req.session.user = usr
                 res.redirect('/foro')
-            } else{
-                console.log(err.message);
-            }
+            } else if (err.message.includes('required')){
+                res.render('registrate', {message: 'No se completaron todos los campos. Vuelve a intentar.'})
+            } 
+              else if (err.message.includes(userName)) {
+                res.render('registrate', {message: 'Este nombre de usuario ya está siendo utilizado.'});
+            } else if (err.message.includes(email)) {
+                res.render('registrate', {message: 'Este email ya está siento utilizado.'});
+            } 
         })
     }
 
@@ -58,6 +63,7 @@ if(await securePass.decrypt(pass, user[0].password)){
         userName: user[0].userName,
         password: user[0].password,
         email: user[0].email,
+        
     }
 
     req.session.user =  usr
@@ -85,6 +91,7 @@ async function editProfile(req, res){
        res.render('editProfile')
    }
 }
+
 
 //delete
 async function deleteUser(req, res) {
@@ -126,7 +133,7 @@ async function contactanos(req, res) {
     to: 'contacto@breakingarg.com',
     from: email,
     subjet: 'Mensaje desde "contactanos"',
-    html: `Contacto de ${userName}: ${msg}`
+    html: `${userName}: ${msg}`,
    }
     
    const transport = nodemailer.createTransport({
@@ -163,7 +170,7 @@ async function contactanos(req, res) {
         contactanos,
         getContactanos,
         getForo,
-        deleteUser
+        deleteUser,
          }
 
 

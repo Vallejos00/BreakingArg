@@ -12,23 +12,17 @@
     <label for="userName">Nombre de usuario</label>
 <p class="form-input">{{user.userName}}</p>
 
+
   
 <div class="btn-container">
 <a class="btn" href="/foro">Volver</a>
-<input type="checkbox" class="check" value="Eliminar perfil" id="check">
-<label class="btn-delete" for="check">Eliminar perfil</label>
+<input type="submit" class="btn-delete" value="Eliminar perfil" id="btn-delete">
+
 <a class="btn" href="/miPerfil/editProfile">Editar perfil</a>
 </div>
 </div>
 
-<div class="modal-container">
-    <p>¿Seguro que desea eliminar su perfil?</p>
-    <p>Esta acción eliminará tu cuenta. Una vez eliminada, no se puede volver para atrás.</p>
- <input type="text" value="Cancelar" class="btn">
-<input type="submit" value="Si, eliminar" class="btn-delete">
-<label for="check" class="cerrar-modal"></label>
 
-</div>
 </form>
 <p>
 {{message}}
