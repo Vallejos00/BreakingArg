@@ -8,6 +8,7 @@ import usersRt from "./routes/usersRT.js";
 import session from "express-session";
 import path from "path";
 import User from "./schemas/userSchemas.js";
+import auth from "./config/auth.js";
 
 const PORT = 3000
 const app = express()
@@ -29,6 +30,12 @@ app.use(express.static(path.join('public')));
 app.get('/', (req, res) => {
     res.render('home', {user: req.session.user})
 });
+
+app.get('/verPersonajes', auth, (req, res) => {
+    fetch(url)
+    .then(resp => resp.json())
+    .then(characters => res.render('verPersonajes', {characters}))
+})
 
 
 

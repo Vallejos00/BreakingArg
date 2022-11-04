@@ -1,0 +1,13 @@
+{{>header}}
+<a href="/foro">Volver</a>
+
+<div class="char-container">
+{{#each characters}}
+<div class="cardContainer">
+  <img src={{img}} alt={{name}}>
+  <h1 class="char-name">{{name}}</h1>
+</div>
+{{/each}}
+</div>
+
+{{>footer}}
