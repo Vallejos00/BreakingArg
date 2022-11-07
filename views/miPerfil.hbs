@@ -1,29 +1,51 @@
-<h1>Perfil</h1>
+
+    
 <div class="form-container">
-<form method="POST" action="/miPerfil/delete">
-    <label for="firstName">Nombre:</label>
-<p class="form-input">{{user.firstName}}</p>
+<h1>Perfil</h1>
+    <form method="POST" action="/miPerfil/delete">
+        <label for="firstName">Nombre:</label>
+            <p class="form-input">{{user.firstName}}</p>
 
-    <label for="lastName">Apellido:</label>
-<p class="form-input">{{user.lastName}}</p>
+         <label for="lastName">Apellido:</label>
+            <p class="form-input">{{user.lastName}}</p>
 
-    <label for="email">Email</label>
-<p class="form-input">{{user.email}}</p>
-    <label for="userName">Nombre de usuario</label>
-<p class="form-input">{{user.userName}}</p>
+         <label for="email">Email</label>
+            <p class="form-input">{{user.email}}</p>
+        
+         <label for="userName">Nombre de usuario</label>
+            <p class="form-input">{{user.userName}}</p>
 
+</div>
 
   
-<div class="btn-container">
-<a class="btn" href="/foro">Volver</a>
-<input type="submit" class="btn-delete" value="Eliminar perfil" id="btn-delete">
+    <div class="btn-container">
+       <a class="btn" href="/foro">Volver</a>
+       <a class="btn" href="/miPerfil/editProfile">Editar perfil</a>
 
-<a class="btn" href="/miPerfil/editProfile">Editar perfil</a>
-</div>
+
+
+
+   <input type="checkbox" id="btn-modal">
+   <label for="btn-modal" class="lbl-modal">Eliminar perfil</label>
+
+    <div class="modal">
+        <div class="modal-container"> 
+          <div class="modal-content">
+        <p>¿Seguro que quiere eliminar su perfil?</p>
+        <div class="btn-modal-container">
+    <label for="btn-modal" class="btn">Cancelar</label>
+    <input type="submit" class="btn-delete" value="Eliminar" id="btn-delete">
+       </div>
+          </div>
+        </div>
+    </div>
+
 </div>
 
 
 </form>
+
+
 <p>
 {{message}}
 </p>

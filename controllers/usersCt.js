@@ -3,6 +3,7 @@
   import User from '../schemas/userSchemas.js'
   import transport from '../config/nodemailer.js'
   import nodemailer from "nodemailer"
+import { Model } from 'mongoose'
   const router = express.Router()
   router.use(express.urlencoded())
 
@@ -27,6 +28,7 @@
             email: newUser.email
         }    
         newUser.save((err)=>{
+            console.log(err);
             if(!err){
                 req.session.user = usr
                 res.redirect('/foro')
@@ -84,13 +86,24 @@ async function getProfile(req, res){
  }
 //proceso formulario de edit
 async function editProfile(req, res){
+    
    try{
        await User.findByIdAndUpdate(req.session.user.id, req.body)
        res.redirect('/miPerfil')
    } catch (err) {
-       res.render('editProfile')
+    const user = await User.findById(req.session.user.id).lean()
+    console.log(err.message);
+        if (err.message.includes('required')){
+            res.render('editProfile', {user, gralMessage:'Todos los datos deben estar completos'})
+        }
+      else if (err.message.includes('userName')){
+        res.render('editProfile', {user, userMessage: 'user wrong'})
+       } else if (err.message.includes('email')){
+        res.render('editProfile', {user, emailMessage: 'mail wrong'})
+       }   
+   }   
    }
-}
+
 
 
 //delete
