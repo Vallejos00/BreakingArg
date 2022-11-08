@@ -15,11 +15,11 @@
 
     <label for="email">Email</label>
  <input class="form-input-editProfile" id="email" type="text" name="email" value="{{user.email}}" >  
- {{emailMessage}}
+ <p class="err-message">{{emailMessage}}</p>
     <label for="userName">Nombre de usuario</label>
  <input class="form-input-editProfile" id="userName" type="text" name="userName" value="{{user.userName}}" >  
- {{userMessage}}
- {{gralMessage}}
+ <p class="err-message">{{userMessage}}</p>
+ <p class="err-message">{{gralMessage}}</p>
   <div class="btn-container-editProfile">
     <input class="input-btn" type="submit" value="Guardar">
      </form>

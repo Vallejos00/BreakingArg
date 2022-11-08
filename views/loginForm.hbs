@@ -1,18 +1,20 @@
 {{>header}}
-<div>
+<div class="form-container">
 
 <form action= "/loginForm" method="post" id="formElem">
     <label for="userName">Usuario</label>
-<input id="userName" type="text" name="userName">
+<input class= 'form-input' id="userName" type="text" name="userName">
 
-   <label for="password">Contraseña</label>
- <input id="pasword" type="password" name="pass"> 
+   <label for="pass">Contraseña</label>
+ <input class= 'form-input' id="pass" type="password" name="pass"> 
+<p class="err-message">{{message}}</p>
+</div>
 
-<input type="submit" value="Iniciar Sesión">
-<a href="./registrate">Registrate</a>
+<div class="btn-container">
+<input class="input-btn" type="submit" value="Iniciar Sesión">
+<a href="./registrate" class="btn">Registrate</a>
 </form>
 
 
 </div>
-{{message}}
 {{>footer}}

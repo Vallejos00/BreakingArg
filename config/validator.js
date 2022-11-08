@@ -14,7 +14,7 @@ const validationRules = [
         if(!errors.isEmpty()){
             const user = await User.findById(req.session.user.id).lean()
             console.log(errors);
-            res.render('editProfile', {user, gralMessage:'No puede quedar ningún campo vacío'})
+            res.render('editProfile', {user, gralMessage:'*No puede quedar ningún campo vacío*'})
         } else return next()
     }
 ]

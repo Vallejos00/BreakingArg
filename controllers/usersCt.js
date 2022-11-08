@@ -1,9 +1,8 @@
   import securePass from '../helpers/pass.js'
   import express from "express"
   import User from '../schemas/userSchemas.js'
-  import transport from '../config/nodemailer.js'
   import nodemailer from "nodemailer"
-import { Model } from 'mongoose'
+  import { Model } from 'mongoose'
   const router = express.Router()
   router.use(express.urlencoded())
 
@@ -33,12 +32,12 @@ import { Model } from 'mongoose'
                 req.session.user = usr
                 res.redirect('/foro')
             } else if (err.message.includes('required')){
-                res.render('registrate', {message: 'No se completaron todos los campos. Vuelve a intentar.'})
+                res.render('registrate', {message: '*No se completaron todos los campos. Vuelve a intentar.*'})
             } 
               else if (err.message.includes(userName)) {
-                res.render('registrate', {message: 'Este nombre de usuario ya está siendo utilizado.'});
+                res.render('registrate', {message: '*Este nombre de usuario ya está siendo utilizado.*'});
             } else if (err.message.includes(email)) {
-                res.render('registrate', {message: 'Este email ya está siento utilizado.'});
+                res.render('registrate', {message: '*Este email ya está siento utilizado.*'});
             } 
         })
     }
@@ -93,13 +92,10 @@ async function editProfile(req, res){
    } catch (err) {
     const user = await User.findById(req.session.user.id).lean()
     console.log(err.message);
-        if (err.message.includes('required')){
-            res.render('editProfile', {user, gralMessage:'Todos los datos deben estar completos'})
-        }
-      else if (err.message.includes('userName')){
-        res.render('editProfile', {user, userMessage: 'user wrong'})
+        if (err.message.includes('userName')){
+        res.render('editProfile', {user, userMessage: '*Este nombre de usuario ya está siendo utilizado*'})
        } else if (err.message.includes('email')){
-        res.render('editProfile', {user, emailMessage: 'mail wrong'})
+        res.render('editProfile', {user, emailMessage: '*Este email ya está siendo utilizado*'})
        }   
    }   
    }
@@ -153,8 +149,8 @@ async function contactanos(req, res) {
     host: "smtp.mailtrap.io",
     port: 2525,
     auth: {
-       user: "3055524f7a3205",
-       pass: "64f85d462bc0f7"
+       user: process.env.user,
+       pass: process.env.pass
      }
      });
 
@@ -163,8 +159,6 @@ async function contactanos(req, res) {
    if (!sendMailStatus.length) {
     sendMailFeedback = 'El mensaje fue enviado correctamente'
   } 
-  
-  
   res.render('sendedmsg', {message: sendMailFeedback})
 
 }
