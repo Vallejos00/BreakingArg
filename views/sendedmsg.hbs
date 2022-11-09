@@ -1,3 +1,8 @@
-<p>{{message}}</p>
-<a href="/foro">Volver al inicio</a>
-<a href="/contactanos">Enviar otro mensaje</a>
+{{>header}}
+
+<p class="sended-msg">{{message}}</p>
+<div class="btn-container">
+<a class="btn" href="/foro">Volver al inicio</a>
+<a class="btn" href="/contactanos">Enviar otro mensaje</a>
+</div>
+{{>footer}}

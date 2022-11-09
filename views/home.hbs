@@ -2,7 +2,6 @@
 
 <h3 class="first-text">Bienvenidos a BreakingArg, un sitio de información acerca de la mejor serie de la historia
 </h3>
-<p>{{message}}</p>
 {{#if user}}
 <p><a href="/foro">Volvé al foro</a></p>
 {{else}}
@@ -11,6 +10,7 @@
 <a href="/loginForm" class="btn">Iniciar sesión</a>
 <a href="/registrate" class="btn">Registrate</a>
 
+<p class="err-message">{{message}}</p>
 </div>
 {{/if}}
 

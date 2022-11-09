@@ -1,18 +1,18 @@
-
-    
-<div class="form-container-miPerfil">
+{{>header}}
 <h1>Perfil</h1>
+<div class="form-container-miPerfil">
+    
     <form method="POST" action="/miPerfil/delete">
-        <label for="firstName">Nombre:</label>
+        <label class="lbl-title" for="firstName">Nombre:</label>
             <p class="form-input">{{user.firstName}}</p>
 
-         <label for="lastName">Apellido:</label>
+         <label class="lbl-title" for="lastName">Apellido:</label>
             <p class="form-input">{{user.lastName}}</p>
 
-         <label for="email">Email</label>
+         <label class="lbl-title" for="email">Email</label>
             <p class="form-input">{{user.email}}</p>
         
-         <label for="userName">Nombre de usuario</label>
+         <label class="lbl-title" for="userName">Nombre de usuario</label>
             <p class="form-input">{{user.userName}}</p>
 
 </div>
@@ -33,7 +33,7 @@
           <div class="modal-content">
         <p>¿Seguro que quiere eliminar su perfil?</p>
         <div class="btn-modal-container">
-    <label for="btn-modal" class="btn">Cancelar</label>
+    <label for="btn-modal" class="btn-modal">Cancelar</label>
     <input type="submit" class="btn-delete" value="Eliminar" id="btn-delete">
        </div>
           </div>

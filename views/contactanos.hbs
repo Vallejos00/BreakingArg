@@ -1,19 +1,25 @@
-<div>
+{{>header}}
+
+<div class="form-container">
 
 <form action= "/contactanos"  id="formElem" method="POST">
     <label for="userName">Nombre de usuario:</label>
-<input id="userName" type="text" name="userName" value="{{user.userName}}" readonly>
+<input class="form-input" id="userName" type="text" name="userName" value="{{user.userName}}" readonly>
 
 
     <label for="email">Email:</label>
- <input id="email" type="text" name="email" value="{{user.email}}" readonly>  
+ <input class="form-input" id="email" type="text" name="email" value="{{user.email}}" readonly>  
 
-   <textarea name="msg"></textarea>
+   <textarea autofocus name="msg"></textarea>
  <input id="msg" type="hidden" name="msg"> 
-
-<input type="submit" value="enviar">
-</form>
-
 </div>
 
-<a href="/foro">Volver</a>
+<div class="btn-container">
+<input class="input-btn" type="submit" value="Enviar">
+<a class="btn" href="/foro">Volver</a>
+</div>
+
+</form>
+
+
+{{>footer}}

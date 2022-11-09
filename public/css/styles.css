@@ -91,8 +91,39 @@ width: 35vh;
   
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+
+
+}
+
+/*MOBILE*/
+@media only screen and (max-width: 768px){
+
+  .form-container-editProfile{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 30%;
+    margin-right: 30%;
+    
+    border-radius: 7%;
+    padding: 2%;
+    justify-content: center;
+    background-color: white;
+    
+  }
+
+  .btn-container-editProfile{
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+    align-items: center;
+  
+  }
 
 
 }
@@ -150,9 +181,9 @@ aside{
 }
 
 .info-container{
-  width: 40%;
+  width: 55%;
   background-color:  rgb(236, 236, 150);
-  margin-left: 20vh;
+  
 }
 
 ul{
@@ -165,11 +196,82 @@ ul{
   margin-right: 10rem;
 }
 
+.menu-item{
+  border-bottom:1px solid rgb(117, 116, 116);
+  margin-top: 7px;
+  margin-bottom:17px ;
+  font-size: larger;
+  color: black;
+  text-decoration: none;
+}
+a{
+  color: black;
+  text-decoration: none;  
+}
+
+
 
 .final-text{
   margin-bottom: 2rem;
 }
 
+/*MOBILE*/
+@media only screen and (max-width: 1200px){
+  .info-container{
+    width: 80%;
+    background-color:  rgb(236, 236, 150);
+    margin-left: 0;
+    margin-right: 20vh;
+    justify-content: center;
+  }
+
+  .foro-text{
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .foro-container{
+    display: flex;
+    flex-direction: column;
+    }
+
+  aside{
+    width: 99%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .aside-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+
+  .info-container{
+    width: 100%;
+    background-color:  rgb(236, 236, 150);
+    margin-left: 0;
+    margin-right:0
+  }
+
+  .menu-item{
+    font-size:15px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom:0;
+    border: none;
+  }
+
+  .user-name{
+    font-size: 37px;
+  }
+}
 /*--------------------------------------------------------*/
 body{
 
@@ -199,8 +301,20 @@ input{
   background-color: rgb(255, 255, 255);
 }
 
+.btn-container{
+
+  display: flex;
+  flex-direction: row;
+  margin-left: 33%;
+  margin-right: 33%;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
 .form-container{
   display: flex;
+  align-items: center;
   flex-direction: column;
   margin-left: 37%;
   margin-right: 37%;
@@ -215,12 +329,17 @@ h1{
   color:rgb(26, 25, 25)
 }
 
+.lbl-title{
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .form-input{
   display: flex;
   flex-direction: column;
   margin-top: 3% ;
   margin-bottom: 20px;
-  border:solid 1px rgb(199, 196, 196);
+  border-bottom:solid 1px rgb(199, 196, 196);
   border-radius: 15px;
   padding: 2%;
   
@@ -271,18 +390,6 @@ h1{
 }
 
 
-.btn-container{
-  
-
-  display: flex;
-  flex-direction: row;
-  margin-left: 27rem;
-  margin-right: 27rem;
-  justify-content: space-evenly;
-  align-items: center;
-
-}
-
 .footer{
   
   padding-top: 40px;
@@ -311,6 +418,84 @@ h1{
   margin-top: 0;
   font-size: 14px;
 }
+
+.sended-msg{
+  padding: 50px;
+  text-align: center;
+margin: 10px;
+}
+
+textarea{
+width: 30vh;
+height: 10vh;
+
+}
+
+/*MOBILE*/
+@media only screen and (max-width: 768px){
+
+  .form-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 30%;
+    margin-right: 30%;
+    
+    border-radius: 7%;
+    padding: 2%;
+    justify-content: center;
+    background-color: rgb(255, 255, 219);
+    
+  }
+
+  .btn-container{
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+    align-items: center;
+  
+  }
+
+  .btn{
+    text-decoration: none;
+    background-color: rgb(46, 122, 23);
+    padding: 0.5rem;
+    font-size: 14px;
+    border-radius: 7px;
+    border-style: none;
+    cursor: pointer;
+    color: aliceblue;
+    margin: 0.5rem;
+  }
+
+  .input-btn{
+    text-decoration: none;
+    font-size: 14px;
+    background-color: rgb(46, 122, 23);
+    padding: 0.5rem;
+    border-radius: 7px;
+    border-style: none;
+    box-sizing: content-box;
+    cursor: pointer;
+    color: aliceblue;
+  }
+}
+
+.btn-delete{
+  text-decoration: none;
+  background-color: rgb(207, 18, 18);
+  padding: 0.5rem;
+  font-size: 14px;
+  border-radius: 7px;
+  border-style: none;
+  
+  cursor: pointer;
+  color: aliceblue;
+}
+
+
 /*---------------MODAL----------------------*/
 
 
@@ -328,6 +513,7 @@ h1{
   visibility: hidden;
 }
 #btn-modal:checked ~ .modal{
+
   opacity: 1;
   visibility: visible;
 }
@@ -363,9 +549,46 @@ h1{
 
 }
 
+.btn-modal{
+  text-decoration: none;
+  background-color: rgb(46, 122, 23);
+  padding: 0.5rem;
+  font-size: 14px;
+  border-radius: 7px;
+  border-style: none;
+  cursor: pointer;
+  color: aliceblue;
+  margin: 0.5rem;
+}
+
 .btn-modal-container{
   display: flex;
   margin: 5%;
   justify-content: space-evenly;
   align-items: center;
+}
+
+/*MOBILE*/
+@media only screen and (max-width: 768px){
+  .lbl-modal{
+    text-decoration: none;
+    background-color: rgb(207, 18, 18);
+    padding: 0.5rem;
+    font-size: 14px;
+    border-radius: 7px;
+    box-sizing: content-box;
+    cursor: pointer;
+    color: aliceblue;
+  }
+
+  .modal-container{
+    width: 42%;
+    height: 22%;
+    margin: auto;
+    background: white;
+    box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
