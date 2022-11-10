@@ -2,20 +2,21 @@
 <div class="form-container">
 <form action= "/registrate" method="POST" id="formElem">
     <label for="firstName">Nombre:</label>
-<input class="form-input" id="firstName" type="text" name="firstName">
+<input class="form-input" id="firstName" type="text" name="firstName" value="{{req.body.firstName}}">
 
     <label for="lastName">Apellido:</label>
-<input class="form-input" id="lastName" type="text" name="lastName">
+<input class="form-input" id="lastName" type="text" name="lastName" value="{{req.body.lastName}}">
 
     <label for="email">Email</label>
- <input class="form-input" id="email" type="text" name="email">  
+ <input class="form-input" id="email" type="text" name="email" value="{{req.body.email}}">  
 
     <label for="userName">Nombre de usuario</label>
- <input class="form-input" id="userName" type="text" name="userName">  
+ <input class="form-input" id="userName" type="text" name="userName" value="{{req.body.userName}}">  
 
    <label for="password">Contraseña</label>
- <input class="form-input" id="password" type="password" name="pass"> 
+ <input class="form-input" id="password" type="password" name="pass" > 
 <p class="err-message">{{message}}</p>
+<p class="err-message">{{gralMessage}}</p>
 </div>
 <div class="btn-container">
 <input class="input-btn" type="submit" value="Registrarme">

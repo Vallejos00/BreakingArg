@@ -32,12 +32,17 @@
                 req.session.user = usr
                 res.redirect('/foro')
             } else if (err.message.includes('required')){
-                res.render('registrate', {message: '*No se completaron todos los campos. Vuelve a intentar.*'})
-            } 
-              else if (err.message.includes(userName)) {
-                res.render('registrate', {message: '*Este nombre de usuario ya está siendo utilizado.*'});
-            } else if (err.message.includes(email)) {
-                res.render('registrate', {message: '*Este email ya está siento utilizado.*'});
+                console.log(err);
+                res.render('registrate', {req ,message: '*Todos los campos son obligatorios.*'})
+            } else if (err.message.includes(userName)) {
+                console.log(err.message);
+                res.render('registrate', {req, message: '*Este nombre de usuario ya está siendo utilizado.*'});
+            } else if (err.message.includes('invalid')){
+                console.log(req.body);
+                res.render('registrate', {req ,message: '*Ingrese un email válido.*'})
+            }  else if (err.message.includes(email)) {
+                console.log(err.message);
+                res.render('registrate', {req, message: '*Este email ya está siento utilizado.*'});
             } 
         })
     }
@@ -96,7 +101,7 @@ async function editProfile(req, res){
         res.render('editProfile', {user, userMessage: '*Este nombre de usuario ya está siendo utilizado*'})
        } else if (err.message.includes('email')){
         res.render('editProfile', {user, emailMessage: '*Este email ya está siendo utilizado*'})
-       }   
+       } 
    }   
    }
 

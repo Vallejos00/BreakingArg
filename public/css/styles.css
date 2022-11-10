@@ -282,6 +282,7 @@ body{
 
 .first-text{
   margin-bottom: 10vh;
+  margin-left: 2vh;
 }
 
 input{
@@ -302,7 +303,7 @@ input{
 }
 
 .btn-container{
-
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row;
   margin-left: 33%;
@@ -438,8 +439,8 @@ height: 10vh;
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 25%;
+    margin-right: 25%;
     
     border-radius: 7%;
     padding: 2%;
@@ -481,9 +482,8 @@ height: 10vh;
     cursor: pointer;
     color: aliceblue;
   }
-}
-
-.btn-delete{
+  
+  .btn-delete{
   text-decoration: none;
   background-color: rgb(207, 18, 18);
   padding: 0.5rem;
@@ -495,6 +495,11 @@ height: 10vh;
   color: aliceblue;
 }
 
+.lbl-title{
+  font-size: 16px;
+}
+
+}
 
 /*---------------MODAL----------------------*/
 
