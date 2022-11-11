@@ -38,7 +38,7 @@
                 console.log(err.message);
                 res.render('registrate', {req, message: '*Este nombre de usuario ya está siendo utilizado.*'});
             } else if (err.message.includes('invalid')){
-                console.log(req.body);
+                console.log(err.message);
                 res.render('registrate', {req ,message: '*Ingrese un email válido.*'})
             }  else if (err.message.includes(email)) {
                 console.log(err.message);

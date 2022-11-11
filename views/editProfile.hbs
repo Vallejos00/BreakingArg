@@ -7,19 +7,26 @@
 <div class="form-container-editProfile">
 
 <form action= "/miPerfil/editProfile" method="POST" id="formElem">
-    <label for="firstName">Nombre:</label>
+    <label class="lbl" for="firstName">Nombre:</label>
 <input class="form-input-editProfile" id="firstName" type="text" name="firstName" value="{{user.firstName}}" >
+  <p class="err-message">{{firstNameError.msg}}</p>
 
-    <label for="lastName">Apellido:</label>
+    <label class="lbl" for="lastName">Apellido:</label>
 <input class="form-input-editProfile" id="lastName" type="text" name="lastName" value="{{user.lastName}}" >
+ <p class="err-message">{{lastNameError.msg}}</p>
 
-    <label for="email">Email</label>
- <input class="form-input-editProfile" id="email" type="text" name="email" value="{{user.email}}" >  
+    <label class="lbl" for="email">Email</label>
+ <input class="form-input-editProfile" id="email" type="text" name="email" value="{{user.email}}" >
+ <p class="err-message">{{emailError.msg}}</p>  
  <p class="err-message">{{emailMessage}}</p>
-    <label for="userName">Nombre de usuario</label>
+
+    <label class="lbl" for="userName">Nombre de usuario</label>
  <input class="form-input-editProfile" id="userName" type="text" name="userName" value="{{user.userName}}" >  
+ <p class="err-message">{{userNameError.msg}}</p>
  <p class="err-message">{{userMessage}}</p>
- <p class="err-message">{{gralMessage}}</p>
+
+
+
   <div class="btn-container-editProfile">
     <input class="input-btn" type="submit" value="Guardar">
      </form>
