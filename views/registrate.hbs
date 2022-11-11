@@ -2,21 +2,28 @@
 <div class="form-container">
 <form action= "/registrate" method="POST" id="formElem">
     <label for="firstName">Nombre:</label>
-<input class="form-input" id="firstName" type="text" name="firstName" value="{{req.body.firstName}}">
+     <p class="err-message">{{firstNameError.msg}}</p>
+<input class="form-input" id="firstName" type="text" name="firstName" value="{{user.firstName}}">
 
     <label for="lastName">Apellido:</label>
-<input class="form-input" id="lastName" type="text" name="lastName" value="{{req.body.lastName}}">
+     <p class="err-message">{{lastNameError.msg}}</p>
+<input class="form-input" id="lastName" type="text" name="lastName" value="{{user.lastName}}">
 
     <label for="email">Email</label>
- <input class="form-input" id="email" type="text" name="email" value="{{req.body.email}}">  
+     <p class="err-message">{{emailError.msg}}</p>
+     <p class="err-message">{{mailMessage}}</p>  
+ <input class="form-input" id="email" type="text" name="email" value="{{user.email}}">  
 
     <label for="userName">Nombre de usuario</label>
- <input class="form-input" id="userName" type="text" name="userName" value="{{req.body.userName}}">  
+ <p class="err-message">{{userNameError.msg}}</p>
+ <p class="err-message">{{userMessage}}</p>
+ <input class="form-input" id="userName" type="text" name="userName" value="{{user.userName}}">
+  
 
    <label for="password">Contraseña</label>
- <input class="form-input" id="password" type="password" name="pass" > 
+ <p class="err-message">{{passError.msg}}</p>
+ <input class="form-input" id="password" type="password" name="pass" value="{{user.pass}}"> 
 <p class="err-message">{{message}}</p>
-<p class="err-message">{{gralMessage}}</p>
 </div>
 <div class="btn-container">
 <input class="input-btn" type="submit" value="Registrarme">

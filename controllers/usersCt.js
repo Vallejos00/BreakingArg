@@ -1,5 +1,6 @@
   import securePass from '../helpers/pass.js'
   import express from "express"
+  import session from "express-session";
   import User from '../schemas/userSchemas.js'
   import nodemailer from "nodemailer"
   import { Model } from 'mongoose'
@@ -31,18 +32,14 @@
             if(!err){
                 req.session.user = usr
                 res.redirect('/foro')
-            } else if (err.message.includes('required')){
-                console.log(err);
-                res.render('registrate', {req ,message: '*Todos los campos son obligatorios.*'})
-            } else if (err.message.includes(userName)) {
+            }  else if (err.message.includes('email')) {
+                const user = req.body
                 console.log(err.message);
-                res.render('registrate', {req, message: '*Este nombre de usuario ya está siendo utilizado.*'});
-            } else if (err.message.includes('invalid')){
+                res.render('registrate', {user, mailMessage: '*Este email ya está siento utilizado.*'});
+            }  else if (err.message.includes('userName')) {
+                const user = req.body
                 console.log(err.message);
-                res.render('registrate', {req ,message: '*Ingrese un email válido.*'})
-            }  else if (err.message.includes(email)) {
-                console.log(err.message);
-                res.render('registrate', {req, message: '*Este email ya está siento utilizado.*'});
+                res.render('registrate', {user, userMessage: '*Este nombre de usuario ya está siendo utilizado.*'});
             } 
         })
     }
@@ -120,7 +117,17 @@ async function getForo(req, res){
     res.render('foro', {user})
 }
 
+//muestro BCS
+async function getBCS(req, res){
+    const user = await User.findById(req.session.user.id).lean()
+    res.render('betterCallSaul', {user})
+}
 
+//muestro nosotros
+async function getNosotros(req, res){
+    
+    res.render('nosotros', {user: req.session.user})
+}
 
 //logout
 function logout(req, res){
@@ -183,6 +190,8 @@ async function contactanos(req, res) {
         getContactanos,
         getForo,
         deleteUser,
+        getBCS,
+        getNosotros
          }
 
 

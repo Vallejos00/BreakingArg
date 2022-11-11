@@ -1,0 +1,18 @@
+{{>header}}
+
+<h3 class="first-text">Somos fanáticos del universo de Breaking Bad. Así que decidimos realizar esta página informativa
+    para que puedas acceder a todos los datos de la serie. ¡Que lo disfrutes!
+</h3>
+{{#if user}}
+<p><a class="btn" href="/foro">Volvé al foro</a></p>
+{{else}}
+<div class="btn-container">
+<h3>Iniciá sesión para acceder a toda la información</h3>
+<a href="/loginForm" class="btn">Iniciar sesión</a>
+<a href="/registrate" class="btn">Registrate</a>
+
+<p class="err-message">{{message}}</p>
+</div>
+{{/if}}
+
+{{>footer}}

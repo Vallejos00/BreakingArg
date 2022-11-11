@@ -13,7 +13,10 @@ usersRt.post('/loginForm', usersFunction.sendLoginForm);
 usersRt.get('/loginForm', usersFunction.getLoginForm);
 //foro
 usersRt.get('/foro', auth, usersFunction.getForo)
-
+//BCS
+usersRt.get('/betterCallSaul', auth, usersFunction.getBCS)
+//nosotros
+usersRt.get('/nosotros', usersFunction.getNosotros)
 //edit
 usersRt.get('/miPerfil', auth, usersFunction.getProfile)
 usersRt.get('/miPerfil/editProfile', auth, usersFunction.profileForm)
